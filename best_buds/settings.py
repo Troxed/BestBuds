@@ -95,10 +95,10 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "BB_data",
-        "USER": "bbadmin",
-        "PASSWORD": "Blunt$m0k3420",
-        "HOST": "database-1.cpgey3ejguix.us-west-2.rds.amazonaws.com",
+        "NAME": "d7iepdb226iov6",
+        "USER": "pzarnhvrqywcbx",
+        "PASSWORD": "a8a0ad655f70ddd20df4bb69051b646432366b586f1a8b3cba45cbea297db61f",
+        "HOST": "ec2-54-159-22-90.compute-1.amazonaws.com",
         "PORT": "5432",
     }
 }
