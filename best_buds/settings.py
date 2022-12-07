@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
-import os
+
+
 
 
 
@@ -28,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ["*"]
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
@@ -93,8 +94,12 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "BB_data",
+        "USER": "bbadmin",
+        "PASSWORD": "Blunt$m0k3420",
+        "HOST": "database-1.cpgey3ejguix.us-west-2.rds.amazonaws.com",
+        "PORT": "5432",
     }
 }
 
