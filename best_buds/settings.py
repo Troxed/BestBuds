@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['bestbuds420.herokuapp.com']
+ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
@@ -141,3 +141,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+import django_heroku
+django_heroku.settings(locals())
