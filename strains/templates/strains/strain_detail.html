@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1 class="text-4xl text-center">{{ strain.name }}</h1>
+
+    <div class="grid grid-cols-1 place-items-center">
+        <div></div>
+        <div class="col-md-4">
+            <img src="{{ strain.image.url }}">
+        </div>
+        <div></div>
+    </div>
+
+
+    <div class="flex justify-center items-center gap-4 mx-4 place-items-center font-bold">
+        <p class="w-28 text-center">Type</p>
+        <p class="w-28 text-center">THC</p>
+        <p class="w-28 text-center">Breeder</p>
+    </div>
+
+    <div class="flex justify-center items-center gap-4 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 h-14 w-28 max-w-xs">
+            <p class="text-center py-3">{{ strain.get_type_display }}</p>
+        </div>
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 h-14 w-28 max-w-xs">
+            <p class="text-center py-3">{{ strain.thc }}%</p>
+        </div>
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 w-28 max-w-xs overflow-auto">
+            <p class="flex justify-center items-center text-center text-sm h-14">{{ strain.breeder}}</p>
+        </div>
+    </div>
+
+
+    <div class="flex justify-center items-center gap-4 mx-4 place-items-center font-bold">
+        <p class="w-28 text-center">Effects</p>
+        <p class="w-28 text-center">Aroma/Flavor</p>
+        <p class="w-28 text-center">Lineage</p>
+    </div>
+
+    <div class="flex justify-center items-center gap-4 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 w-28 max-w-xs overflow-auto">
+            <p class="flex justify-center items-center text-center text-sm h-14">{{ strain.get_effect_display}}</p>
+        </div>
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 w-28 max-w-xs overflow-auto">
+            <p class="flex justify-center items-center text-center text-sm h-14">{{ strain.get_aroma_display }}</p>
+        </div>
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 w-28 max-w-xs overflow-auto">
+            <p class="flex justify-center items-center text-center text-sm h-14">{{ strain.lineage }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 mx-4 mt-4 place-items-center font-bold">
+        <p>Description</p>
+    </div>
+
+    <div class="grid grid-cols-1 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 max-w-xl max-h-32
+        overflow-auto whitespace-pre-line py-1 px-3">{{ strain.description }}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 mx-4 mt-4 place-items-center font-bold">
+        <p>Grow Information</p>
+    </div>
+
+    <div class="grid grid-cols-1 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 max-w-xl max-h-32
+        overflow-auto whitespace-pre-line py-1 px-3">{{ strain.grow_info }}"
+        </div>
+    </div>
+{% endblock %}}
+
+
