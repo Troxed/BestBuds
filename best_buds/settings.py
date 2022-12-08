@@ -32,7 +32,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
     # config('DEBUG', default=False, cast=bool)
 
 
@@ -127,7 +127,7 @@ AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 # Password validation
@@ -167,6 +167,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
