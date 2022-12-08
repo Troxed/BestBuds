@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
-import dj_database_url
+
 
 
 
@@ -29,11 +29,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ["*"]
+
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
@@ -95,26 +95,12 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "database name",
-#         "USER": "database user",
-#         "PASSWORD": "database password",
-#         "HOST": "database endpoint",
-#         "PORT": "database port",
-#     }
-# }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES["default"].update(db_from_env)
-
 
 
 # Password validation
