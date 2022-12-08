@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+
+import storages.backends.s3boto3
 from decouple import config
 
 
@@ -27,6 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
     "strains",
     "core",
     "userprofile",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -95,12 +99,34 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "railway",
+        "USER": "postgres",
+        "PASSWORD": "u44iuFZHluBDV7yGLPeu",
+        "HOST": "containers-us-west-160.railway.app",
+        "PORT": "7764",
     }
 }
+
+# Amazon S3 bucket config
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 # Password validation
