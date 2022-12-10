@@ -110,11 +110,11 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "u44iuFZHluBDV7yGLPeu",
-        "HOST": "containers-us-west-160.railway.app",
-        "PORT": 7764,
+        "NAME": config('DB_NAME'),
+        "USER": config('DB_USER'),
+        "PASSWORD": config('DB_PASSWORD'),
+        "HOST": config('DB_HOST'),
+        "PORT": config('DB_PORT'),
     }
 }
 
