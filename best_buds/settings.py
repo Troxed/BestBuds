@@ -107,16 +107,16 @@ WSGI_APPLICATION = "best_buds.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "u44iuFZHluBDV7yGLPeu",
-        "HOST": "containers-us-west-160.railway.app",
-        "PORT": 7764,
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "railway",
+#         "USER": "postgres",
+#         "PASSWORD": "u44iuFZHluBDV7yGLPeu",
+#         "HOST": "containers-us-west-160.railway.app",
+#         "PORT": 7764,
+#     }
+# }
 
 # Amazon S3 bucket config
 
