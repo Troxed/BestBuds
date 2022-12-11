@@ -1,5 +1,6 @@
 from django.db import models
-
+from PIL import Image
+from io import BytesIO
 from multiselectfield import MultiSelectField
 
 class Strain(models.Model):
@@ -98,6 +99,7 @@ class Strain(models.Model):
     description = models.TextField()
     grow_info = models.TextField()
     image = models.ImageField(upload_to='strains/img')
+
 
     def __str__(self):
         return self.name

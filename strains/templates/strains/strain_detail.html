@@ -2,12 +2,12 @@
 
 {% block content %}
 
-    <h1 class="text-4xl text-center">{{ strain.name }}</h1>
+    <h1 class="text-4xl text-center mb-2">{{ strain.name }}</h1>
 
     <div class="grid grid-cols-1 place-items-center">
         <div></div>
         <div class="col-md-4">
-            <img src="{{ strain.image.url }}">
+            <img src="{{ strain.image.url }}" style="max-height: 360px">
         </div>
         <div></div>
     </div>
