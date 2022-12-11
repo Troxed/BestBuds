@@ -3,6 +3,14 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 class Strain(models.Model):
+
+    STOCK_CHOICES = (
+        ("in_stock", "In stock"),
+        ("limited_stock", "Limited stock"),
+        ("out_of_stock", "Out of stock"),
+        ("gone_forever", "Gone forever"),
+    )
+
     TYPE_CHOICES = (
         ("indica", "Indica"),
         ("sativa", "Sativa"),
@@ -80,6 +88,7 @@ class Strain(models.Model):
     )
 
     name = models.CharField(max_length=50)
+    stock = models.CharField(max_length=20, choices=STOCK_CHOICES, default="gone_forever")
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="hybrid")
     effect = MultiSelectField(choices=EFFECT_CHOICES, max_choices=3, max_length=50)
     thc = models.IntegerField()

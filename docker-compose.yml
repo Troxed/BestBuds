@@ -14,5 +14,7 @@ services:
     command: python manage.py runserver 0.0.0.0:$PORT
     volumes:
       - .:/code
+    ports:
+      - "8085:8085"
     depends_on:
       - db
