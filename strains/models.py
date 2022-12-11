@@ -93,7 +93,7 @@ class Strain(models.Model):
     effect = MultiSelectField(choices=EFFECT_CHOICES, max_choices=3, max_length=50)
     thc = models.IntegerField()
     breeder = models.CharField(max_length=30, null=True)
-    lineage = models.CharField(max_length=45, null=True)
+    lineage = models.CharField(max_length=75, null=True)
     aroma = MultiSelectField(choices=AROMA_CHOICES, max_choices=3, max_length=50)
     description = models.TextField()
     grow_info = models.TextField()
