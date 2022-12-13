@@ -43,7 +43,7 @@ LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'index'
 
-CSRF_TRUSTED_ORIGINS=['https://*.bestbuds.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://*.bestbuds.up.railway.app', 'https://*.bestbuds.app', 'https://127.0.0.1']
 
 
 # Application definition
