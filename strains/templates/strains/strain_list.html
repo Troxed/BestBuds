@@ -4,29 +4,43 @@
 
 {% block content %}
     <div class="py-6 px-6">
-        <h1 class="mb-4 text-xl">Strains</h1>
+        <h1 class="mb-4 text-2xl font-bold">Strains</h1>
 
 
-            {% if strains %}
-            <div class="mt-6 flex justify-between">
-                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Name</p>
-                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Type</p>
-                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Effect</p>
-            </div>
-
+        {% if strains %}
             {% for strain in strains %}
                 {% if strain.stock != "gone_forever" and strain.stock != "out_of_stock" %}
-                    <div class="flex justify-between text-sm">
-                        <p class="py-2 px-2 w-full underline {% cycle 'bg-gray-100' '' %}">
-                            <a href="{% url 'strains:strain_detail' strain.id %}">{{ strain.name }}</a>
-                        </p>
-                        <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ strain.get_type_display }}</p>
-                        <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">{{ strain.get_effect_display }}</p>
-                    </div>
+                        <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';"class="grid grid-cols-3 mx-auto rounded-xl m-4 h-42 max-w-xs
+                            {% if strain.get_type_display == 'Sativa' %}bg-yellow-100
+                            {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-100
+                            {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-100
+                            {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-100
+                            {% else %}bg-indigo-100{% endif %}">
+
+                                <div class="col-span-2 px-4 mt-2">
+                                    <a class="px-2 rounded-lg font-bold
+                                        {% if strain.get_type_display == 'Sativa' %}bg-yellow-300 text-yellow-700
+                                        {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300 text-yellow-700
+                                        {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-300 text-emerald-700
+                                        {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300 text-indigo-700
+                                        {% else %}bg-indigo-300 text-indigo-700{% endif %}">{{ strain.get_type_display}}</a>
+                                </div>
+
+                                <img src="{{ strain.image.url }}" class="row-span-3 p-3 justify-self-end" style="max-height: 180px">
+
+                                <div class="col-span-2 px-2 mt-4 text-xl font-bold">
+                                    <a>{{ strain.name }}</a>
+                                </div>
+
+                                <div class="col-span-2 px-2 mt-6 mb-2 w-full">
+                                    <span class="font-bold">Effects:<br></span><span>{{ strain.get_effect_display }}</span>
+                                </div>
+
+                        </div>
                 {% endif %}
             {% endfor %}
         {% else %}
-            <p class="mt= 6 px-2">No strains to display.</p>
+            <div class="mt= 6 px-2">No strains to display.</div>
         {% endif %}
     </div>
 {% endblock %}
