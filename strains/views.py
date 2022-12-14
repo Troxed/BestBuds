@@ -12,7 +12,9 @@ def strain_list(request):
     strains = Strain.objects.all().order_by('name')
 
     return render(request, "strains/strain_list.html", {
-        'strains': strains
+        'strains': strains,
+
+
     })
 
 
