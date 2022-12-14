@@ -13,7 +13,7 @@
 
                     <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
 
-                            <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl
+                            <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl
                                 {% if strain.get_type_display == 'Sativa' %}bg-yellow-100
                                 {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-100
                                 {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-100
