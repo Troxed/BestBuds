@@ -20,13 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from core.views import index, about
+from core.views import index, about, trim
 from userprofile.views import signup
 
 
 urlpatterns = [
     path('', index, name='index'),
     path('strains/', include('strains.urls')),
+    path('trim/', trim, name='trim'),
     path('about/', about, name='about'),
     path('sign-up/', signup, name='signup'),
     path('log-in/', views.LoginView.as_view(template_name='userprofile/login.html'), name='login'),

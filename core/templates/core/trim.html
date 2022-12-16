@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+    <h1 class="text-4xl text-center mb-2">Trim and<br>Popcorn Bud</h1>
+
+    <div class="grid grid-cols-1 place-items-center">
+        <div></div>
+        <div class="col-md-4">
+            <img src="{% static 'img/trimpic.png' %}" style="max-height: 360px">
+        </div>
+        <div></div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 mx-4 mt-4 place-items-center font-bold">
+        <p>Description</p>
+    </div>
+
+    <div class="grid grid-cols-1 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 max-w-xl max-h-32
+        overflow-auto whitespace-pre-line py-1 px-3">Cannabis trim is the sugar leaves that are collected after a harvest is trimmed. Our trimming process involves removing the fan leaves prior to trimming, so the trim we offer consists only of the most flavorful and potent parts of the plant.
+
+            Popcorn bud refers to small flowers that are about the size of popcorn. Our trim product includes popcorn buds that weren't quite large enough to make it into the flower jars. This makes our trim product a great value!
+
+            There are many ways to use cannabis trim, from making concentrates like rosin or hash, to adding it to joints or bowls for an extra kick of flavor. You can even use it to make edibles by decarboxylating the trim and mixing it into your favorite cannabis recipes.
+
+            Whether you're a seasoned cannabis consumer or just getting started, cannabis trim is a great option to have on hand. It's versatile, cost-effective, and can add a whole new dimension to your consumption experience.
+
+            Give it a try and see for yourself!
+        </div>
+    </div>
+{% endblock %}}
+
+
