@@ -9,7 +9,7 @@
 
         {% if strains %}
             {% for strain in strains %}
-                {% if strain.stock != "gone_forever" and strain.stock != "out_of_stock" %}
+                {% if strain.stock != "gone_forever" and strain.stock != "out_of_stock" and strain.stock != "coming_soon" %}
 
                     <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
 
