@@ -10,6 +10,8 @@ class Strain(models.Model):
         ("limited_stock", "Limited stock"),
         ("out_of_stock", "Out of stock"),
         ("gone_forever", "Gone forever"),
+        ("coming_soon", "Coming soon"),
+
     )
 
     TYPE_CHOICES = (
