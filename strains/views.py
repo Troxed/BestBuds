@@ -13,8 +13,6 @@ def strain_list(request):
 
     return render(request, "strains/strain_list.html", {
         'strains': strains,
-
-
     })
 
 
