@@ -9,7 +9,7 @@
 
         {% if concentrates %}
             {% for concentrate in concentrates %}
-                <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
+                <div onclick="location.href='{% url 'concentrates:concentrate_detail' concentrate.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
 
                     <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50 bg-indigo-300">
                         <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
