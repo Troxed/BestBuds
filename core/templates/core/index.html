@@ -10,10 +10,7 @@
                 <img src="{% static 'img/flower.png' %}" class="h-1/2 w-1/2 mt-6 place-self-center">
                 <div class="mt-auto mb-2 mx-auto font-semibold">Flower</div>
             </div>
-            <div class="flex flex-col rounded-lg bg-gray-100 border-2 shadow-xl h-32 w-32 justify-self-start m-2 relative">
-                <div style="overflow: visible" class="absolute top-6 right-3">
-                    <img src="{% static 'img/coming_soon.png' %}" style="width: 100px">
-                </div>
+            <div onclick="location.href='{% url 'concentrates:concentrate_list' %}';"class="flex flex-col rounded-lg bg-gray-100 border-2 shadow-xl h-32 w-32 justify-self-start m-2 relative">
                 <img src="{% static 'img/concentrates.png' %}" class="h-1/2 w-1/2 mt-6 place-self-center">
                 <div class="mt-auto mb-2 mx-auto font-semibold">Concentrates</div>
             </div>

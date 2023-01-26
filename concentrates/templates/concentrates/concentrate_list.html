@@ -9,11 +9,10 @@
 
         {% if concentrates %}
             {% for concentrate in concentrates %}
-                <div onclick="location.href='{% url 'concentrates:concentrate_detail' concentrate.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
-
+                <div onclick="location.href='{% url 'concentrates:concentrate_detail' concentrate.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4 py-6">
                     <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50 bg-indigo-300">
-                        <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
-                            <img src="{{ concentrate.image.url }}" style="height: 230px">
+                        <div style="overflow: visible" class="absolute top-3 col-start-2 row-span-5 row-start-1">
+                            <img src="{{ concentrate.image.url }}">
                         </div>
 
                         <div  class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
@@ -21,7 +20,7 @@
                         </div>
 
                         <div class="col-span-2 px-2 mt-2 mb-2">
-                            <span class="font-semibold underline mx-1">Effects:</span>
+                            <span class="font-semibold underline mx-1"></span>
                             <ul>
                             {% for effect in strain.effect %}
                                  <li class="text-sm">&nbsp {{ effect.title }}</li>

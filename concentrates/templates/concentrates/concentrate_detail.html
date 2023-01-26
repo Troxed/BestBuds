@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'core/base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+    <h1 class="text-4xl text-center mb-2">{{ concentrate.name }}</h1>
+
+    <div class="grid grid-cols-1 place-items-center">
+        <div></div>
+        <div class="col-md-4">
+            <img src="{{ concentrate.image.url }}" style="max-height: 360px; max-width: 360px;">
+        </div>
+        <div></div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 mx-4 mt-4 place-items-center font-bold">
+        <p>Description</p>
+    </div>
+
+    <div class="grid grid-cols-1 mx-4 place-items-center">
+        <div class="bg-gray-100 border-2 rounded-lg border-green-400 max-w-xl max-h-32
+            overflow-auto whitespace-pre-line py-1 px-3">{{ concentrate.description }}
+        </div>
+    </div>
+{% endblock %}}
