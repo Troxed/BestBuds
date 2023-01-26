@@ -26,6 +26,7 @@ from userprofile.views import signup
 
 urlpatterns = [
     path('', index, name='index'),
+    path('concentrates/', include('concentrates.urls')),
     path('strains/', include('strains.urls')),
     path('trim/', trim, name='trim'),
     path('about/', about, name='about'),

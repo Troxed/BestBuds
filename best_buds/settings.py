@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "multiselectfield",
     "strains",
+    "concentrates",
     "core",
     "userprofile",
     "storages",
@@ -79,6 +80,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "strains/templates"),
+            os.path.join(BASE_DIR, "concentrates/templates"),
             os.path.join(BASE_DIR, "core/templates"),
             os.path.join(BASE_DIR, "userprofile/templates")
         ],
