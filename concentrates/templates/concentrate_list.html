@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'core/base.html' %}
 
-</body>
-</html>
+{% block title %}Concentrates{% endblock %}
+
+{% block content %}
+    <div class="py-6 px-6">
+        <h1 class="mb-2 text-3xl font-bold">Concentrates</h1>
+
+
+        {% if concentrates %}
+            {% for concentrate in concentrates %}
+                <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
+
+                    <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50 bg-indigo-300">
+                        <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
+                            <img src="{{ concentrate.image.url }}" style="height: 230px">
+                        </div>
+
+                        <div  class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
+                        <a>{{ concentrate.name }}</a>
+                        </div>
+
+                        <div class="col-span-2 px-2 mt-2 mb-2">
+                            <span class="font-semibold underline mx-1">Effects:</span>
+                            <ul>
+                            {% for effect in strain.effect %}
+                                 <li class="text-sm">&nbsp {{ effect.title }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="mt= 6 px-2">No strains to display.</div>
+        {% endif %}
+    </div>
+{% endblock %}
