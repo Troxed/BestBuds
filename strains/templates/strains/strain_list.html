@@ -3,57 +3,86 @@
 {% block title %}Strains{% endblock %}
 
 {% block content %}
+    {% if not request.GET.stock %}
+        <script>
+            window.location.href = "{% url 'strains:strain_list' %}?stock=in_stock";
+        </script>
+    {% endif %}
     <div class="py-6 px-6">
         <h1 class="text-center mb-4 text-3xl font-bold">Flower</h1>
-
+        <form method="get" action="{% url 'strains:strain_list' %}">
+            <div class="mb-8 max-w-xs text-center mx-auto">
+                <div class="relative">
+                    <select name="stock" id="stock" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="in_stock"{% if request.GET.stock == "in_stock" %} selected{% endif %}>In Stock</option>
+                        <option value="out_of_stock"{% if request.GET.stock == "out_of_stock" %} selected{% endif %}>Out of Stock</option>
+                        <option value="coming_soon"{% if request.GET.stock == "coming_soon" %} selected{% endif %}>Coming Soon</option>
+                        <option value="gone_forever"{% if request.GET.stock == "gone_forever" %} selected{% endif %}>Gone Forever</option>
+                        <option value="all"{% if request.GET.stock == "all" %} selected{% endif %}>All Strains</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l6.293-6.293a1 1 0 011.414 1.414l-7 7z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </form>
 
         {% if strains %}
             {% for strain in strains %}
-                {% if strain.stock != "gone_forever" and strain.stock != "out_of_stock" and strain.stock != "coming_soon" %}
+                {% if request.GET.stock == "all" or strain.stock == request.GET.stock %}
 
                     <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
 
-                            <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50
-                                {% if strain.get_type_display == 'Sativa' %}bg-yellow-300
-                                {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300
-                                {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-300
-                                {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300
-                                {% else %}bg-indigo-300
-                                {% endif %}">
+                        <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50
+                            {% if strain.get_type_display == 'Sativa' %}bg-yellow-300
+                            {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300
+                            {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-300
+                            {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300
+                            {% else %}bg-indigo-300
+                            {% endif %}">
 
-                                <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
-                                    <img src="{{ strain.image.url }}" style="height: 230px">
-                                </div>
-
-                                <div class="col-span-2 px-2 py-2">
-                                    <a class="px-2 rounded-lg font-bold
-                                        {% if strain.get_type_display == 'Sativa' %}bg-yellow-300 text-yellow-900
-                                        {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300 text-yellow-900
-                                        {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-300 text-emerald-900
-                                        {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300 text-indigo-900
-                                        {% else %}bg-indigo-300 text-indigo-900
-                                        {% endif %}">{{ strain.get_type_display}}
-                                    </a>
-                                </div>
-
-                                <div  class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
-                                <a>{{ strain.name }}</a>
-                                </div>
-
-                                <div class="col-span-2 px-2 mt-2 mb-2">
-                                    <span class="font-semibold underline mx-1">Effects:</span>
-                                    <ul>
-                                    {% for effect in strain.effect %}
-                                         <li class="text-sm">&nbsp {{ effect.title }}</li>
-                                    {% endfor %}
-                                    </ul>
-                                </div>
+                            <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
+                                <img src="{{ strain.image.url }}" style="height: 230px">
                             </div>
+
+                            <div class="col-span-2 px-2 py-2">
+                                <a class="px-2 rounded-lg font-bold
+                                    {% if strain.get_type_display == 'Sativa' %}bg-yellow-300 text-yellow-900
+                                    {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300 text-yellow-900
+                                    {% elif strain.get_type_display == 'Hybrid' %}bg-emerald-300 text-emerald-900
+                                    {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300 text-indigo-900
+                                    {% else %}bg-indigo-300 text-indigo-900
+                                    {% endif %}">{{ strain.get_type_display}}
+                                </a>
+                            </div>
+
+                            <div  class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
+                            <a>{{ strain.name }}</a>
+                            </div>
+
+                            <div class="col-span-2 px-2 mt-2 mb-2">
+                                <span class="font-semibold underline mx-1">Effects:</span>
+                                <ul>
+                                {% for effect in strain.effect %}
+                                     <li class="text-sm">&nbsp {{ effect.title }}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}
         {% else %}
-            <div class="mt= 6 px-2">No strains to display.</div>
+            <div class="mt-6 px-2 text-center">No strains to display.</div>
         {% endif %}
     </div>
+
+    <script>
+        const stockSelect = document.getElementById("stock");
+        stockSelect.addEventListener("change", function() {
+            const selectedValue = stockSelect.options[stockSelect.selectedIndex].value;
+            window.location.href = "{% url 'strains:strain_list' %}?stock=" + selectedValue;
+        });
+    </script>
+
 {% endblock %}
