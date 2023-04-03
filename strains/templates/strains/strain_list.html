@@ -32,7 +32,6 @@
                 {% if request.GET.stock == "all" or strain.stock == request.GET.stock %}
 
                     <div onclick="location.href='{% url 'strains:strain_detail' strain.id %}';" class="relative grid grid-cols-3 grid-rows-5 mx-auto max-w-xs -m-4">
-
                         <div class="grid grid-cols-3 row-start-2 row-span-3 col-span-3 rounded-xl shadow-2xl bg-opacity-50
                             {% if strain.get_type_display == 'Sativa' %}bg-yellow-300
                             {% elif strain.get_type_display == 'Sativa Hybrid' %}bg-yellow-300
@@ -40,11 +39,9 @@
                             {% elif strain.get_type_display == 'Indica Hybrid' %}bg-indigo-300
                             {% else %}bg-indigo-300
                             {% endif %}">
-
                             <div style="overflow: visible" class="absolute top-5 -right-3 row-span-5 row-start-1">
                                 <img src="{{ strain.image.url }}" style="height: 230px">
                             </div>
-
                             <div class="col-span-2 px-2 py-2">
                                 <a class="px-2 rounded-lg font-bold
                                     {% if strain.get_type_display == 'Sativa' %}bg-yellow-300 text-yellow-900
@@ -55,11 +52,9 @@
                                     {% endif %}">{{ strain.get_type_display}}
                                 </a>
                             </div>
-
-                            <div  class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
+                            <div class="text-[17px] px-2 font-bold col-span-2 tracking-tight">
                             <a>{{ strain.name }}</a>
                             </div>
-
                             <div class="col-span-2 px-2 mt-2 mb-2">
                                 <span class="font-semibold underline mx-1">Effects:</span>
                                 <ul>

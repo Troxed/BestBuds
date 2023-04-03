@@ -1,13 +1,14 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-
-    <h1 class="text-4xl text-center m-4">{{ strain.name }}</h1>
-
     <div class="grid grid-cols-1 place-items-center">
-        <div></div>
+        <div class="text-center m-4">
+            <div class="text-4xl">
+                {{ strain.name }}
+            </div>
+        </div>
         <div class="col-md-4">
-            <img src="{{ strain.image.url }}" style="max-height: 360px">
+            <img src="{{ strain.image.url }}" style="max-height: 360px; margin-bottom: 1rem">
         </div>
         <div></div>
     </div>
